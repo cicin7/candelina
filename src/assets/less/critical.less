@@ -1,353 +1,199 @@
 /* STYLES FOR ABOVE THE FOLD */
 
 /*-- -------------------------- -->
-<---           Hero             -->
+<---          Gallery           -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
-@media only screen and (min-width: 0em) {
-    #hero {
-        font-family: "Roboto", "Arial", sans-serif;
-        /* Centers button */
-        text-align: center;
-        /* changes on tablet */
-        padding: 0 (16/16rem);
-        padding-bottom: (100/16rem);
-        position: relative;
-        z-index: 1;
-        /* prevents overflow from the lines extending past the screen width */
-        overflow: hidden;
-
-        .cs-picture {
-            /* Background Image */
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -2;
-
-            &:before {
-                /* Black Color Overlay */
-                content: "";
-                width: 100%;
-                height: 100%;
-                background: #000;
-                opacity: 0.7;
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 1;
-                /* prevents the cursor from interacting with it */
-                pointer-events: none;
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-                /* Makes image act like a background-image */
-                object-fit: cover;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        }
+@media only screen and (min-width: 0rem) {
+    #gallery-406 {
+        padding: var(--sectionPadding);
 
         .cs-container {
             width: 100%;
-            max-width: (1280/16em);
+            /* changes to 955px at desktop */
+            max-width: (955/16rem);
             margin: auto;
-            /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
-            /* 144px - 280px - leaving extra space for the navigation */
-            /* changes on tablet */
-            padding: clamp(9em, 25.95vw, 17.5em) 0;
-            position: relative;
-
-            &:before {
-                /* Left Line */
-                content: "";
-                width: 1px;
-                height: 100%;
-                background: -moz-linear-gradient(
-                    top,
-                    rgba(250, 251, 252, 0.5) 0%,
-                    rgba(250, 251, 252, 0) 100%
-                ); /* FF3.6-15 */
-                background: -webkit-linear-gradient(
-                    top,
-                    rgba(250, 251, 252, 0.5) 0%,
-                    rgba(250, 251, 252, 0) 100%
-                ); /* Chrome10-25,Safari5.1-6 */
-                opacity: 1;
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        }
-
-        .cs-flex-group {
-            width: 80vw;
-            /* 464px - 562px */
-            max-width: clamp(29em, 60vw, 35.125em);
-            margin: auto;
-            /* 60px - 220px */
-            margin-bottom: clamp(3.75em, 15.5vw, 13.75em);
-            box-sizing: border-box;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 6vw, 4rem);
+            position: relative;
         }
 
-        .cs-topper {
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
             text-align: center;
-            margin-bottom: (16/16rem);
-            color: var(--primary);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: center;
         }
 
         .cs-title {
-            text-align: center;
-            width: 100%;
-            color: var(--bodyTextColorWhite);
+            margin: 0 0 (24/16rem) 0;
         }
 
-        .cs-text {
-            text-align: center;
-            /* 32px - 40px */
-            margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
-            /* 40px - 48px */
-            margin-bottom: clamp(2.5rem, 4vw, 3rem);
-            color: var(--bodyTextColorWhite);
-        }
-
-        .cs-button-solid {
-            line-height: clamp(2.875em, 5.5vw, 3.5em);
-            height: initial;
-            margin-bottom: (16/16rem);
-        }
-
-        .cs-button-transparent {
-            font-size: (16/16rem);
-            font-weight: 700;
-            /* 46px - 56px */
-            line-height: clamp(2.875em, 5.5vw, 3.5em);
-            text-decoration: none;
-            width: (180/16rem);
-            /* 46px - 56px */
-            height: clamp(2.875em, 5.5vw, 3.5em);
-            margin: 0 (8/16rem);
-            box-sizing: border-box;
-            padding: 0;
-            color: #fff;
-            background-color: transparent;
-            border: 1px solid var(--bodyTextColorWhite);
-            display: inline-flex;
+        .cs-button-group {
+            margin: 0;
+            display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            row-gap: (8/16rem);
+            column-gap: (32/16rem);
+        }
+
+        .cs-button {
+            font-size: (16/16rem);
+            line-height: 1.5em;
+            color: var(--bodyTextColor);
+            background-color: transparent;
+            border: none;
+            transition: color 0.3s;
+            &:hover {
+                color: var(--primary);
+                cursor: pointer;
+            }
+            &.cs-active {
+                color: var(--primary);
+            }
+        }
+
+        .cs-gallery-wrapper {
+            width: 100%;
             position: relative;
             z-index: 1;
+        }
 
-            &:before {
-                content: "";
-                background: #000;
-                opacity: 1;
-                display: block;
+        .cs-gallery {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /* 16px - 20px */
+            gap: clamp(1rem, 1.5vw, 1.25rem);
+            transition:
+                transform 0.7s,
+                opacity 0.3s,
+                visibility 0.5s,
+                top 0.3s,
+                left 0.3s;
+            /* makes the transform scaling origin the top left corner, dictates the direction by which the scale transforms animate towards */
+            transform-origin: left top;
+
+            &.cs-hidden {
                 position: absolute;
-                /* so it sits on top of the border */
-                top: -1px;
-                right: -1px;
-                bottom: -1px;
-                left: -1px;
-                z-index: -1;
-                /* this is what creates the grow affect on hover */
-                transform: scaleX(0);
-                transition: transform 0.3s;
-                transform-origin: left;
-            }
+                /* by using visibility:hidden instead of display:none, we can see the animations from the opacity and transforms, display:none won't render animations. */
+                visibility: hidden;
+                /* prevents the mouse from interacting with it */
+                pointer-events: none;
+                /* hidden galleries have a 0 opacity, and we animate the opacity to 1 when they become active */
+                opacity: 0;
+                /* this top and left value help control the animation, by setting it to position absolute and left 0, the gallery won't fly off screen to the left, it will stop its position to be at the left edge of the .cs-container (left: 0). Same for the top:0 value, the gallery won't go past that position when it animates */
+                top: 0;
+                left: 0;
+                position: absolute;
+                /* prevents the hidden galleries from overflowing the section, and makes a nice animations to transition to and from */
+                transform: scaleY(0) scaleX(0);
 
-            &:hover {
-                &:before {
-                    transform: scaleX(1);
+                .cs-image {
+                    /* when gallery is hidden, add these styles to the cs-image to animate from when cs-hidden is removed from the .cs-gallery */
+                    transform: translateY(2.1875rem);
+                    opacity: 0;
                 }
             }
-
-            .cs-img {
-                margin-right: (12/16rem);
-                display: block;
-            }
         }
-    }
-}
 
-/* Tablet - 768px */
-@media only screen and (min-width: 48em) {
-    #hero {
-        /* 32px - 40px */
-        padding: 0 clamp(2em, 5vw, 2.5em);
+        .cs-image {
+            border-radius: (20/16rem);
+            width: 47%;
+            aspect-ratio: 1;
+            /* clips the image corners */
+            overflow: hidden;
+            display: block;
+            position: relative;
+            /* when .cs-hidden is removed from the .cs-gallery, reset these values and animate between their hidden styles */
+            transform: translateY(0rem);
+            opacity: 1;
+            transition:
+                opacity 0.6s,
+                transform 0.6s;
 
-        .cs-container {
-            padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
-            &:after {
-                /* Right Line */
-                content: "";
-                width: 1px;
-                height: 100%;
-                background: -moz-linear-gradient(
-                    top,
-                    rgba(250, 251, 252, 0) 0%,
-                    rgba(250, 251, 252, 0.5) 100%
-                ); /* FF3.6-15 */
-                background: -webkit-linear-gradient(
-                    top,
-                    rgba(250, 251, 252, 0) 0%,
-                    rgba(250, 251, 252, 0.5) 100%
-                ); /* Chrome10-25,Safari5.1-6 */
-                opacity: 1;
-                display: block;
+            &:nth-of-type(1) {
+                /* these delays stagger the reveal of each image so they all go one after the other and not all at once */
+                transition-delay: 0.15s;
+            }
+            &:nth-of-type(2) {
+                transition-delay: 0.3s;
+            }
+            &:nth-of-type(3) {
+                transition-delay: 0.45s;
+            }
+            &:nth-of-type(4) {
+                transition-delay: 0.6s;
+            }
+            &:nth-of-type(5) {
+                transition-delay: 0.75s;
+            }
+            &:nth-of-type(6) {
+                transition-delay: 0.9s;
+            }
+            &:nth-of-type(7) {
+                transition-delay: 1.05s;
+            }
+            &:nth-of-type(8) {
+                transition-delay: 1.2s;
+            }
+
+            img {
                 position: absolute;
                 top: 0;
-                right: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                /* makes it act like a background image */
+                object-fit: cover;
             }
-        }
-
-        .cs-button-solid {
-            margin-right: (20/16rem);
-            margin-bottom: 0;
         }
     }
 }
 
-/* Desktop Parallax Effect - 1300px */
-@media only screen and (min-width: 81.25em) {
-    #hero {
-        background: url("/assets/images/landing.jpg");
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        /* creates parallax effect on background image */
-        background-attachment: fixed;
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #gallery-406 {
+        .cs-container {
+            max-width: (955/16rem);
+        }
+        .cs-image {
+            width: 32.8%;
+            max-width: (305/16rem);
+            /* 300px - 400px */
+            height: clamp(18.75rem, 30vw, 25rem);
+            aspect-ratio: 1;
+        }
     }
 }
 
 /* Dark Mode */
-@media only screen and (min-width: 0em) {
+@media only screen and (min-width: 0rem) {
     body.dark-mode {
-        #hero {
-            .cs-background {
-                &:before {
-                    opacity: 0.8;
-                }
+        #gallery-406 {
+            .cs-topper {
+                color: var(--primaryLight);
             }
-        }
-    }
-}
-
-/*-- -------------------------- -->
-<---          Services          -->
-<--- -------------------------- -*/
-
-/* Mobile */
-@media only screen and (min-width: 0em) {
-    .services {
-        width: 90%;
-        max-width: (1320/16em);
-        margin: auto;
-        margin-top: calc(-167 / 16 * 1em);
-        margin-bottom: (50/16em);
-        padding: (50/16em) (20/16em);
-        background: #fff;
-        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-        border-top: (6/16em) solid var(--primary);
-        border-radius: (5/16em);
-        position: relative;
-        z-index: 100;
-        .card {
-            width: 100%;
-            max-width: (357/16em);
-            margin: auto;
-            margin-bottom: (50/16em);
-            display: block;
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-
-            picture {
-                width: (88/16em);
-                height: (88/16em);
-                margin: auto;
-                margin-bottom: (23/16em);
-                background: var(--primary);
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                img {
-                    width: (48/16em);
-                    height: (48/16em);
-                }
-            }
-            h2 {
-                font-size: (32/16em);
-                font-weight: 700;
-                line-height: (27/20em);
-                text-align: center;
-                margin-bottom: (13/20em);
-                color: #1a1a1a;
-            }
-            p {
-                line-height: (24/18em);
-                text-align: center;
-                width: 100%;
-                opacity: 0.7;
-            }
-        }
-    }
-}
-
-/* Inbetween */
-@media only screen and (min-width: 768px) {
-    .services {
-        font-size: ~"min(1.8vw, 1em)";
-        width: 98%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-
-        .card {
-            max-width: (325/16em);
-            margin: 0;
-        }
-    }
-}
-
-/* Large Desktop */
-@media only screen and (min-width: 1300px) {
-    .services {
-        padding: (50/16em) (80/16em);
-
-        .card {
-            max-width: (357/16em);
-        }
-    }
-}
-
-/* Dark mode */
-@media only screen and (min-width: 0em) {
-    body.dark-mode {
-        #services {
-            background: var(--medium);
-
-            picture {
-                background: var(--primaryDark);
-            }
-
-            h2 {
-                font-weight: bold;
-                color: #fff;
+            .cs-title,
+            .cs-text,
+            .cs-button {
+                color: var(--bodyTextColorWhite);
             }
         }
     }
